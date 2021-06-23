@@ -1,0 +1,15 @@
+/*Falha na criação da tabela do usuário com resalva no FK*/
+/*Criação tabela usuário e vinculação com tabela categorias*/
+CREATE TABLE `playground`.`usarios`(
+	`idusuario` INT NOT NULL AUTO_INCREMENT,
+    `nome` VARCHAR(100) NULL,
+    `sobrenome` VARCHAR(100) NULL,
+	`apelido` VARCHAR(100) NULL,
+    `email` VARCHAR(100) NOT NULL UNIQUE,
+	`categoria` INT NULL,
+    PRIMARY KEY (`idusuario`),
+    INDEX `FKcategoria_idx` (`categoria` ASC) VISIBLE, 
+    CONSTRAINT `FKcategoria`
+		FOREIGN KEY (`categoria`)
+        REFERENCES `playground`.`categorias`(`idcategoria`)
+    );
